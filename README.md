@@ -3,14 +3,14 @@
 An animated snake that eats your GitHub contributions - **built from scratch!**
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Tailwind-Stocker/contribution-snake/output/github-contribution-grid-snake.gif">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Tailwind-Stocker/contribution-snake/output/github-contribution-grid-snake-light.gif">
-  <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/Tailwind-Stocker/contribution-snake/output/github-contribution-grid-snake-light.gif">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Tailwind-Stocker/contribution-snake/output/github-contribution-grid-snake.gif">
+  <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/Tailwind-Stocker/contribution-snake/output/github-contribution-grid-snake.gif">
 </picture>
 
 ## What does this do?
 
-This project automatically generates an animated snake that moves through your GitHub contribution graph, "eating" your contributions as it goes. The snake animation is updated automatically every 12 hours and can be embedded in your GitHub profile README.
+This project automatically generates an animated snake that moves through your GitHub contribution graph, "eating" your contributions as it goes. The snake animation is updated automatically every 6 hours and can be embedded in your GitHub profile README.
 
 **🔥 Custom Implementation**: This uses a custom Python script (not external actions) to fetch your GitHub contributions via the GraphQL API and generate the snake animation from scratch!
 
@@ -20,7 +20,7 @@ This project automatically generates an animated snake that moves through your G
 - 📊 **Real GitHub data** via GraphQL API
 - 🌙 **Automatic theme switching** (light/dark mode support)
 - 🎨 **Multiple formats** (SVG and GIF for both themes)
-- ⚡ **Auto-updates** every 6 hours
+- ⚡ **Auto-updates** every 6 hours (via GitHub Actions)
 - 📱 **Responsive design**
 - 🔧 **Fully customizable** colors and behavior
 
@@ -30,14 +30,14 @@ This project automatically generates an animated snake that moves through your G
 2. **Processes Grid**: Converts raw data into a structured contribution grid
 3. **Generates Path**: Creates a zigzag path for the snake to follow
 4. **Creates Animation**: Renders SVG and GIF animations with the snake eating contributions
-5. **Auto-deploys**: Pushes generated files to GitHub Pages
+5. **Auto-updates**: Pushes generated files to the repository (output branch)
 
 ## Setup Instructions
 
 ### 1. Fork or Create Repository
 
 1. Fork this repository or create a new repository with the same structure
-2. Make sure the repository is public (required for GitHub Pages)
+2. Make sure the repository is public (required for GitHub Actions to run)
 
 ### 2. Enable GitHub Actions
 
@@ -45,22 +45,7 @@ This project automatically generates an animated snake that moves through your G
 2. Navigate to "Actions" → "General"
 3. Under "Actions permissions", select "Allow all actions and reusable workflows"
 
-### 3. Enable GitHub Pages
-
-1. Go to your repository settings
-2. Navigate to "Pages"
-3. Under "Source", select "Deploy from a branch"
-4. Select branch: `output` and folder: `/ (root)`
-5. Click "Save"
-
-### 4. Run the Action
-
-1. Go to the "Actions" tab in your repository
-2. Click on "Generate Snake Animation"
-3. Click "Run workflow" → "Run workflow"
-4. Wait for the workflow to complete (usually takes 1-2 minutes)
-
-### 5. Add to Your Profile
+### 3. Add to Your Profile
 
 Add this to your GitHub profile README.md for **automatic theme switching**:
 
@@ -109,13 +94,18 @@ You can test the snake generation locally before deploying:
 
 2. **Set environment variables**:
    ```bash
+   # On Windows (PowerShell):
+   $env:GITHUB_USERNAME="your_username"
+   $env:GITHUB_TOKEN="your_personal_access_token"
+   
+   # On Linux/macOS:
    export GITHUB_USERNAME=your_username
    export GITHUB_TOKEN=your_personal_access_token
    ```
 
-3. **Run the test script**:
+3. **Run the script**:
    ```bash
-   python test_local.py
+   python run_snake_cli.py
    ```
 
 4. **Check output**: Look in the `dist/` folder for generated files
@@ -185,7 +175,6 @@ The action generates four files:
 
 ### Snake Doesn't Show
 - Wait for the action to complete (check Actions tab)
-- Ensure GitHub Pages is enabled with `output` branch
 - Check that the image URL in your README is correct
 
 ### No Contributions Visible
