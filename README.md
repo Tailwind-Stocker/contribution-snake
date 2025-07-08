@@ -4,8 +4,8 @@ An animated snake that eats your GitHub contributions - **built from scratch!**
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Tailwind-Stocker/contribution-snake/output/github-contribution-grid-snake.gif">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Tailwinf-Stocker/contribution-snake/output/github-contribution-grid-snake-light.gif">
-  <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/Tailwinf-Stocker/contribution-snake/output/github-contribution-grid-snake-light.gif">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Tailwind-Stocker/contribution-snake/output/github-contribution-grid-snake-light.gif">
+  <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/Tailwind-Stocker/contribution-snake/output/github-contribution-grid-snake-light.gif">
 </picture>
 
 ## What does this do?
